@@ -12,5 +12,4 @@ test-output/
 .idea/
 VAADIN/
 .gradle/
-.idea/
 build/
