@@ -1,0 +1,16 @@
+.project
+.settings/
+.classpath
+target/
+test-output/
+*.zip
+*.odp
+*.pdf
+*.ipr
+*.iws
+*.iml
+.idea/
+VAADIN/
+.gradle/
+.idea/
+build/
