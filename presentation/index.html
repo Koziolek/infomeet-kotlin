@@ -101,12 +101,111 @@
                 data class Pet(
                     val name: String,
                     val birthDate: LocalDate,
-                    val owner: Owner,
-                    val type:PetType
+                    val type:PetType,
+                    var owner: Owner?
                 )
                 ```
             </script>
         </section>
+
+        <section data-markdown>
+            <script type="text/template">
+                ```
+                fun main(args: Array<String>) {
+                    val ala = Owner("Ala")
+                    val kot = Pet("Filemon", of(2016, JUNE, 18), PetType("Kot"), ala)
+                    println("$ala ma ${kot}a")
+                }
+                ```
+            </script>
+        </section>
+
+        <section data-markdown>
+            <script type="text/template">
+                ```
+                Owner(name=Ala, pets=[]) ma Pet(name=Filemon, birthDate=2016-06-18, owner=Owner(name=Ala, pets=[]), type=PetType(name=Kot))a
+                ```
+            </script>
+        </section>
+
+        <section data-markdown>
+            <script type="text/template">
+                ```
+                data class Owner(
+                    val name: String,
+                    val pets: MutableList<Pet> = mutableListOf()
+                )
+                ```
+            </script>
+        </section>
+
+        <section data-markdown>
+            <script type="text/template">
+                ```
+                fun main(args: Array<String>) {
+                    val ala = Owner("Ala")
+                    val kot = Pet("Filemon", of(2016, JUNE, 18), PetType("Kot"), ala)
+                    ala.pets + kot
+                    println("$ala ma ${kot}a")
+                }
+                ```
+            </script>
+            <aside class="notes">To się wywali, bo cykl</aside>
+        </section>
+        <section>
+            <section>
+                <h4>Kilka zmian</h4>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ```
+                    data class Owner(
+                    val name: String,
+                    val pets: MutableList<Pet> = mutableListOf()
+                        ){
+                            override fun toString(): String {
+                                return "Owner(name=$name)"
+                            }
+                    }
+                    ```
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ```
+                    fun main(args: Array<String>) {
+                        val ala = Owner("Ala")
+                        val kot = Pet("Filemon", of(2016, JUNE, 18), PetType("Kot"), ala)
+                        ala.pets + kot
+                        println("$ala ma ${kot}a")
+                    }
+                    ```
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ```
+                    fun main(args: Array<String>) {
+                        val ala = Owner("Ala")
+                        val kot = Pet("Filemon", of(2016, JUNE, 18), PetType("Kot"))
+                        ala + kot
+                        println("$ala ma ${kot}a")
+                    }
+                    ```
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ```
+                    operator fun Owner.plus(pet: Pet) {
+                        this.pets.add(pet)
+                        pet.owner = this
+                    }
+                    ```
+                </script>
+            </section>
+        </section>
+
     </div>
 </div>
 
