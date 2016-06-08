@@ -204,8 +204,70 @@
                     ```
                 </script>
             </section>
+            <section>
+                <h4>Czego nam w Javie brakowało</h4>
+                <p class="fragment">Przeciążanie operatorów</p>
+                <p class="fragment">Polimorfizm ad hoc</p>
+            </section>
         </section>
 
+        <section>
+            <section>
+                <h3>Klasy, interfejsy itp.</h3>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ```
+                    interface Repository<T, ID> {
+                        abstract fun byId(id: ID): T
+                        abstract fun save(t: T): T
+                    }
+                    ```
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ```
+                    class PetRepository : Repository<Pet, Long> {
+                        override fun byId(id: Long): Pet {
+                            //...
+                        }
+                        override fun save(t: Pet): Pet {
+                            //...
+                        }
+                    }
+                    ```
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ```
+                    open class GenericService<T, ID>(
+                        val repository: Repository<T, ID>
+                    ) {
+                        open fun byId(id: ID) = repository.byId(id)
+                    }
+                    ```
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ```
+                    class PetService : GenericService<Pet, Long>(PetRepository()){
+                        override fun byId(id: Long): Pet {
+                            println("Selecting pet with $id")
+                            return super.byId(id)
+                        }
+                    }
+                    ```
+                </script>
+            </section>
+
+        </section>
     </div>
 </div>
 
