@@ -27,6 +27,7 @@
 <body>
 <div class="reveal">
     <div class="slides">
+
         <section>
             <h3>Wprowadzenie do Kotlina</h3>
             <p>
@@ -34,35 +35,77 @@
                         href="http://twitter.com/koziolek">@koziolek</a></small>
             </p>
         </section>
+
         <section>
             <section><h3>Filozofia języka</h3></section>
             <section>
                 <h3>Klasyczne języki</h3>
-                <ul>
-                    <li class="fragment">FORTRAN - FORmula TRANslator</li>
-                    <li class="fragment">LISP - LISt Processing</li>
-                    <li class="fragment">ALGOL - ALGOrithmic Language</li>
-                    <li class="fragment">IAL - International Algebraic Language</li>
-                    <li class="fragment">COBOL - Common Business-Oriented Language</li>
-                </ul>
+                <p class="fragment">FORTRAN - <b>FOR</b>mula <b>TRAN</b>slator</p>
+                <p class="fragment">LISP - <b>LIS</b>t <b>P</b>rocessing</p>
+                <p class="fragment">ALGOL - <b>ALGO</b>rithmic <b>L</b>anguage</p>
+                <p class="fragment">IAL - <b>I</b>nternational <b>A</b>lgebraic <b>L</b>anguage</p>
+                <p class="fragment">COBOL - <b>CO</b>mmon <b>B</b>usiness-<b>O</b>riented <b>L</b>anguage</p>
             </section>
             <section>
                 <h3>Komercjalizacja</h3>
-                <ul>
-                    <li class="fragment">Erlang - Ericsson Language</li>
-                    <li class="fragment">JavaScript - Sun był sponsorem</li>
-                </ul>
+                <p class="fragment">Erlang - Ericsson Language</p>
+                <p class="fragment">JavaScript - Sun był sponsorem</p>
             </section>
             <section>
                 <h3>Języki ezoteryczne</h3>
-                <ul>
-                    <li class="fragment">Brainfuck</li>
-                    <li class="fragment">Whitespace</li>
-                </ul>
+                <p class="fragment">Brainfuck</p>
+                <p class="fragment">Whitespace</p>
+                <aside class="notes">
+                    Projekcja lęków
+                </aside>
             </section>
             <section data-background="https://pbs.twimg.com/media/CkWkcWJW0AAIXuO.jpg:large" data-background-size="40%">
-
             </section>
+        </section>
+
+        <section>
+            <h3>Filozofia Kotlina</h3>
+            <p class="fragment">Ma być nowocześnie</p>
+            <p class="fragment">Ma być lekko</p>
+            <p class="fragment">Ma być prosto</p>
+            <p class="fragment">Ma być szybko</p>
+            <aside class="notes">
+                Nowocześnie - cokolwiek to znaczy
+                Lekko - stdlib to około 560Kb
+                Prosto - niski próg wejścia
+                Szybko - ponieważ Scala była powolna
+            </aside>
+        </section>
+
+        <section>
+            <h2>Czas na praktykę</h2>
+        </section>
+
+        <section>
+            <h3>Prosta aplikacja</h3>
+        </section>
+
+        <section data-markdown>
+            <script type="text/template">
+                ```
+                fun main(args: Array<String>) {
+                    println("Hello Infomeet")
+                }
+                ```
+            </script>
+        </section>
+
+        <section data-markdown>
+            <script type="text/template">
+                ```
+                data class Pet(
+                    val name: String,
+                    val birthDate: LocalDate,
+                    val owner: Owner,
+                    val type:PetType
+                )
+                ```
+            </script>
         </section>
     </div>
 </div>
