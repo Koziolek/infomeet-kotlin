@@ -267,11 +267,53 @@
                 </script>
             </section>
 
+            <section>
+                <h3>Singletony</h3>
+                <p class="fragment">Na poziomie semantycznym</p>
+                <p class="fragment">Pozwalają na tworzenie obkektów ad hoc</p>
+                <p class="fragment">Podobne znaczenie jak klasy anonimowe</p>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ```
+                    object PetService : GenericService<Pet, Long>(PetRepository()){
+                        // ...
+                    }
+                    ```
+                </script>
+            </section>
+
+            <section>
+                <h3>Obiekty towarzyszące</h3>
+                <p class="fragment">Zapewniają statyczny kontekst</p>
+                <p class="fragment">Zapewniają statyczny kontekst</p>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ```
+                    class PetService : GenericService<Pet, Long>(PetRepository()){
+
+                        object{
+                            //...
+                        }
+                    }
+                    ```
+                </script>
+            </section>
+
         </section>
 
         <section>
             <section>
                 <h3>fun jak Funkcja</h3>
+            </section>
+            <section>
+                <h3>Funkcje w Kotlinie</h3>
+                <p class="fragment">Istnieją</p>
+                <p class="fragment">Są bytami podstawowymi</p>
+                <p class="fragment">Są obiektami</p>
             </section>
         </section>
     </div>
