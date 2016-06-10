@@ -82,80 +82,87 @@
         </section>
 
         <section>
-            <h3>Prosta aplikacja</h3>
+
+            <section>
+                <h3>Prosta aplikacja</h3>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ```
+                    fun main(args: Array<String>) {
+                        println("Hello Infomeet")
+                    }
+                    ```
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ### Pet Clinic
+                    ```
+                    data class Pet(
+                        val name: String,
+                        val birthDate: LocalDate,
+                        val type:PetType,
+                        var owner: Owner?
+                    )
+                    ```
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ```
+                    fun main(args: Array<String>) {
+                        val ala = Owner("Ala")
+                        val kot = Pet("Filemon", of(2016, JUNE, 18), PetType("Kot"), ala)
+                        println("$ala ma ${kot}a")
+                    }
+                    ```
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ```
+                    Owner(name=Ala, pets=[]) ma Pet(name=Filemon, birthDate=2016-06-18, owner=Owner(name=Ala, pets=[]), type=PetType(name=Kot))a
+                    ```
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ```
+                    data class Owner(
+                        val name: String,
+                        val pets: MutableList<Pet> = mutableListOf()
+                    )
+                    ```
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ```
+                    fun main(args: Array<String>) {
+                        val ala = Owner("Ala")
+                        val kot = Pet("Filemon", of(2016, JUNE, 18), PetType("Kot"), ala)
+                        ala.pets.add(kot)
+                        println("$ala ma ${kot}a")
+                    }
+                    ```
+                </script>
+                <aside class="notes">To się wywali, bo cykl</aside>
+            </section>
         </section>
 
-        <section data-markdown>
-            <script type="text/template">
-                ```
-                fun main(args: Array<String>) {
-                    println("Hello Infomeet")
-                }
-                ```
-            </script>
-        </section>
-
-        <section data-markdown>
-            <script type="text/template">
-                ```
-                data class Pet(
-                    val name: String,
-                    val birthDate: LocalDate,
-                    val type:PetType,
-                    var owner: Owner?
-                )
-                ```
-            </script>
-        </section>
-
-        <section data-markdown>
-            <script type="text/template">
-                ```
-                fun main(args: Array<String>) {
-                    val ala = Owner("Ala")
-                    val kot = Pet("Filemon", of(2016, JUNE, 18), PetType("Kot"), ala)
-                    println("$ala ma ${kot}a")
-                }
-                ```
-            </script>
-        </section>
-
-        <section data-markdown>
-            <script type="text/template">
-                ```
-                Owner(name=Ala, pets=[]) ma Pet(name=Filemon, birthDate=2016-06-18, owner=Owner(name=Ala, pets=[]), type=PetType(name=Kot))a
-                ```
-            </script>
-        </section>
-
-        <section data-markdown>
-            <script type="text/template">
-                ```
-                data class Owner(
-                    val name: String,
-                    val pets: MutableList<Pet> = mutableListOf()
-                )
-                ```
-            </script>
-        </section>
-
-        <section data-markdown>
-            <script type="text/template">
-                ```
-                fun main(args: Array<String>) {
-                    val ala = Owner("Ala")
-                    val kot = Pet("Filemon", of(2016, JUNE, 18), PetType("Kot"), ala)
-                    ala.pets + kot
-                    println("$ala ma ${kot}a")
-                }
-                ```
-            </script>
-            <aside class="notes">To się wywali, bo cykl</aside>
-        </section>
         <section>
+
             <section>
                 <h4>Kilka zmian</h4>
             </section>
+
             <section data-markdown>
                 <script type="text/template">
                     ```
@@ -170,18 +177,20 @@
                     ```
                 </script>
             </section>
+
             <section data-markdown>
                 <script type="text/template">
                     ```
                     fun main(args: Array<String>) {
                         val ala = Owner("Ala")
                         val kot = Pet("Filemon", of(2016, JUNE, 18), PetType("Kot"), ala)
-                        ala.pets + kot
+                        ala.pets.add(kot)
                         println("$ala ma ${kot}a")
                     }
                     ```
                 </script>
             </section>
+
             <section data-markdown>
                 <script type="text/template">
                     ```
@@ -194,6 +203,7 @@
                     ```
                 </script>
             </section>
+
             <section data-markdown>
                 <script type="text/template">
                     ```
@@ -204,6 +214,7 @@
                     ```
                 </script>
             </section>
+
             <section>
                 <h4>Czego nam w Javie brakowało</h4>
                 <p class="fragment">Przeciążanie operatorów</p>
@@ -212,6 +223,7 @@
         </section>
 
         <section>
+
             <section>
                 <h3>Klasy, interfejsy itp.</h3>
             </section>
@@ -245,9 +257,7 @@
             <section data-markdown>
                 <script type="text/template">
                     ```
-                    open class GenericService<T, ID>(
-                        val repository: Repository<T, ID>
-                    ) {
+                    open class GenericService<T, ID>(val repository: Repository<T, ID>) {
                         open fun byId(id: ID) = repository.byId(id)
                     }
                     ```
@@ -287,7 +297,7 @@
             <section>
                 <h3>Obiekty towarzyszące</h3>
                 <p class="fragment">Zapewniają statyczny kontekst</p>
-                <p class="fragment">Zapewniają statyczny kontekst</p>
+                <p class="fragment">Są klasami wewnętrznymi</p>
             </section>
 
             <section data-markdown>
@@ -309,12 +319,179 @@
             <section>
                 <h3>fun jak Funkcja</h3>
             </section>
+
             <section>
                 <h3>Funkcje w Kotlinie</h3>
                 <p class="fragment">Istnieją</p>
                 <p class="fragment">Są bytami podstawowymi</p>
                 <p class="fragment">Są obiektami</p>
             </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ```
+                    fun main(args: Array<String>) {
+                        println("Hello Infomeet")
+                    }
+                    ```
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ```
+                    fun <T, U, R> curr(f: (T, U) -> R): (T) -> (U) -> R {
+                        return fun(t: T): (U) -> R {
+                            return fun(u: U): R {
+                                return f(t, u)
+                            }
+                        }
+                    }
+                    ```
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    #### Wydajność
+                    ```
+                    fun main(args: Array<String>) {
+                        timingLog(1, 2, { a, b -> a + b })
+                    }
+
+                    fun <T, U, R> timingLog(a: T, b: U, f: (T, U) -> R): R {
+                        val watch = Stopwatch.createStarted()
+                        try {
+                            return f(a, b)
+                        }finally{
+                            println("call in ns: "  + watch.elapsed(TimeUnit.NANOSECONDS))
+                        }
+                    }
+                    ```
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    #### Inline
+                    ```
+                    fun main(args: Array<String>) {
+                        timingLog(1, 2, { a, b -> a + b })
+                    }
+
+                    inline fun <T, U, R> timingLog(a: T, b: U, f: (T, U) -> R): R {
+                        val watch = Stopwatch.createStarted()
+                        try {
+                            return f(a, b)
+                        }finally{
+                            println("call in ns: "  + watch.elapsed(TimeUnit.NANOSECONDS))
+                        }
+                    }
+                    ```
+                </script>
+            </section>
+
+            <section>
+                <h3>Co tu się stało?</h3>
+                <p class="fragment">Słowo kluczowe <samp>inline</samp></p>
+                <p class="fragment">przeszczep ciała funkcji do innej.</p>
+                <p class="fragment">Pozbywamy się wywołań wirtualnych.</p>
+                <p class="fragment">Kod wynikowy jest większy.</p>
+            </section>
+
+            <section data-markdown="">
+                <script type="text/template">
+                #### infix
+                ```
+                fun main(args: Array<String>) {
+                    //...
+                    kot visit vet;
+                }
+
+                infix fun Pet.visit(vet: Vet) {
+                    vet.clients.add(this)
+                }
+                ```
+                </script>
+            </section>
+
+            <section>
+                <h3>Co tu się stało?</h3>
+                <p class="fragment">Słowo kluczowe <samp>infix</samp></p>
+                <p class="fragment">redukuje liczbę kropek.</p>
+                <p class="fragment">Tylko funkcje rozszerzające i metody</p>
+            </section>
+
+        </section>
+
+        <section>
+
+            <section>
+                <h3>Magia NPE</h3>
+                <p class="fragment">Eliminacja NPE na poziomie kompilacji</p>
+                <p class="fragment">Typ dopuszczający NPE</p>
+                <p class="fragment">Ukrywanie kontra Wyrzucanie</p>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ### Typy null i nie null
+                    ```
+                    var name:String = "Ala"
+                    var secName:String? = null
+                    ```
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ### Na poziomie funkcji
+                    ```
+                    fun l(name:String?) : Int?{
+                        return name?.length
+                    }
+                    //...
+                    println(l(null)) // null
+                    ```
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ### Na poziomie funkcji II
+                    ```
+                    fun l(name:String?) : Int?{
+                        return name!!.length
+                    }
+                    //...
+                    println(l(null)) // NPE
+                    ```
+                </script>
+            </section>
+
+        </section>
+
+        <section>
+
+            <section>
+                <h3>Podsumowanie</h3>
+                <p class="fragment">Kotlin powstał, bo musiał</p>
+                <p class="fragment">Nie jest "debilną scalą"</p>
+                <p class="fragment">Ma niski próg wejścia</p>
+            </section>
+
+            <section>
+                <h3>O czym nie powiedziałem</h3>
+                <p class="fragment">Delegaty</p>
+                <p class="fragment">Typy generyczne</p>
+                <p class="fragment">Adnotacje i Wyjątki</p>
+                <p class="fragment">Współpraca z Javą</p>
+            </section>
+
+        </section>
+
+        <section>
+            <h3>Pytania?</h3>
         </section>
     </div>
 </div>
